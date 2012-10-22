@@ -1,0 +1,2 @@
+options{  //Make lexer case insensitive
+  IGNORE_CASE = true;  USER_TOKEN_MANAGER = true;  MULTI = true;}PARSER_BEGIN(Assignment)public class Assignment{}PARSER_END(Assignment)void Formula() #void :{}{  f2()  (    (      < AND > f2()    ) #And(2)|  (    < OR > f2()  ) #Or(2))* < EOF >}void f2() #void :{}{  f3()  (    (      < IMPLIES > f3() #Implies(2)  )|  (    < EQUIVALENT > f3() #Equivalent(2)))*}void f3() #void :{}{  < PREDICATE > #Predicate}void Predicate() :{}{  < PREDICATE >}
